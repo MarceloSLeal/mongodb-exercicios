@@ -1,10 +1,9 @@
-db.estados.updateOne({sigla: "SP"}, {$set: {populacao: 453400000}})
+db.estados.countDocument()
 
-db.estados.updateOne({sigla: "AL"}, {$set: {cidades: [{nome: "Sergipe"}]}})
+db.estados.remove({sigla: "AC"})
 
-db.estados.updateOne(
-    {sigla: "SP"},
-    {$push: {cidades: {nome: "Santos", populacao: 433966}}}
-)
+db.estados.remove({populacao: {$exists: true}}, 1)
 
-db.estados.find({populacao: {$exists: true}}, {_id: 0, nome: 1})
+db.estados.updateOne({sigla: "RJ"}, {$set: {populacao: 16720000}})
+
+db.estados.remove({populacao: {$lt: 200000}})
